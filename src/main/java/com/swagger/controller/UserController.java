@@ -27,13 +27,13 @@ public class UserController {
 
 	@ApiOperation(value = "Get a list of users", notes = "Get a list of users")
 	@RequestMapping(value = { "" }, method = RequestMethod.GET)
-	public List<UserDemo> getUserDemo() {
+	public List<UserDemo> getUsers() {
 		List<UserDemo> user = new ArrayList<>(users.values());
 		return user;
 	}
 
 	@ApiOperation(value = "Create a user", notes = "Create a user")
-	@ApiImplicitParam(name = "user", value = "User detailed entity", required = true, dataType = "User")
+	@ApiImplicitParam(name = "user", value = "User entity", required = true, dataType = "User")
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String postUser(@RequestBody UserDemo user) {
 		users.put(user.getId(), user);
@@ -47,12 +47,12 @@ public class UserController {
 		return users.get(id);
 	}
 
-	@ApiOperation(value = "Update information", notes = "According to the id of the url to specify to update the book information")
+	@ApiOperation(value = "Update information", notes = "According to the id of the url to specify to update the user information")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", value = "User ID", required = true, dataType = "Long", paramType = "path"),
 			@ApiImplicitParam(name = "user", value = "User entity", required = true, dataType = "User") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public String putUser(@PathVariable Long id, @RequestBody UserDemo user) {
+	public String updateUser(@PathVariable Long id, @RequestBody UserDemo user) {
 		UserDemo user1 = users.get(id);
 		user1.setUsername(user.getUsername());
 		user1.setFirstName(user.getFirstName());
