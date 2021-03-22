@@ -32,7 +32,7 @@ public class UserController {
 		return user;
 	}
 
-	@ApiOperation(value = "Create a user", notes = "Create a user")
+	@ApiOperation(value = "Create an user", notes = "Create an user")
 	@ApiImplicitParam(name = "user", value = "User entity", required = true, dataType = "User")
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String postUser(@RequestBody UserDemo user) {
